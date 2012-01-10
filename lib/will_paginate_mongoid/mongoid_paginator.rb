@@ -1,4 +1,8 @@
+require 'mongoid'
+require 'will_paginate/collection'
+
 module WillPaginateMongoid
+
   DEFAULT_PER_PAGE = 10
 
   module MongoidPaginator
@@ -29,3 +33,6 @@ module WillPaginateMongoid
     end
   end
 end
+
+Mongoid::Document.send :include, WillPaginateMongoid::MongoidPaginator
+Mongoid::Criteria.send :include, WillPaginateMongoid::MongoidPaginator
